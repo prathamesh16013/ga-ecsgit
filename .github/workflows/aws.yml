@@ -12,7 +12,7 @@
 #    For example, follow the Getting Started guide on the ECS console:
 #      https://us-east-2.console.aws.amazon.com/ecs/home?region=us-east-2#/firstRun
 #    Replace the value of the `ECS_SERVICE` environment variable in the workflow below with the name you set for the Amazon ECS service.
-#    Replace the value of the `ECS_CLUSTER` environment variable in the workflow below with the name you set for the cluster.
+#    Replace the value of the `ECS_CLUSTER` environment variable in the workflow below with the name you set for the chttps://github.com/prathamesh16013/ga-ecsgit/edit/master/.github/workflows/aws.yml#luster.
 #
 # 3. Store your ECS task definition as a JSON file in your repository.
 #    The format should follow the output of `aws ecs register-task-definition --generate-cli-skeleton`.
@@ -56,8 +56,7 @@ jobs:
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        role-to-assume: arn:aws:iam::664418969108:role/ecsTaskExecutionRole
         aws-region: us-east-1
 
     - name: Login to Amazon ECR
