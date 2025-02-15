@@ -33,7 +33,7 @@ on:
 env:
   AWS_REGION: us-east-1                   # set this to your preferred AWS region, e.g. us-west-1
   ECR_REPOSITORY: myrepo         # set this to your Amazon ECR repository name
-  ECS_SERVICE: mynodesevice                 # set this to your Amazon ECS service name
+  ECS_SERVICE: mynodesevice1                 # set this to your Amazon ECS service name
   ECS_CLUSTER: mycluster2                # set this to your Amazon ECS cluster name
   ECS_TASK_DEFINITION: my-task-revision1.json  # set this to the path to your Amazon ECS task definition
                                                # file, e.g. .aws/task-definition.json
@@ -58,6 +58,9 @@ jobs:
       with:
         role-to-assume: arn:aws:iam::664418969108:role/ecsTaskExecutionRole
         aws-region: us-east-1
+
+    - name: Verify AWS Credentials
+      run: aws sts get-caller-identity
 
     - name: Login to Amazon ECR
       id: login-ecr
